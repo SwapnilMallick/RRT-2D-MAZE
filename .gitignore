@@ -1,0 +1,31 @@
+# Local notes
+commands.txt
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Generated outputs
+rrt/gifs/
+rrt/images/
+rrt/plans/
+bidirectional_rrt/gifs/
+bidirectional_rrt/images/
+bidirectional_rrt/plans/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
