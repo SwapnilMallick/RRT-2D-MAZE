@@ -22,6 +22,8 @@ rrt/plans/
 bidirectional_rrt/gifs/
 bidirectional_rrt/images/
 bidirectional_rrt/plans/
+go_explore_inspired_rrt/gifs/
+go_explore_inspired_rrt/images/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -29,3 +31,5 @@ bidirectional_rrt/plans/
 # IDEs
 .vscode/
 .idea/
+
+CLAUDE.md
