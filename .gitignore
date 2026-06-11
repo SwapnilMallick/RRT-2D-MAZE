@@ -24,6 +24,9 @@ bidirectional_rrt/images/
 bidirectional_rrt/plans/
 go_explore_inspired_rrt/gifs/
 go_explore_inspired_rrt/images/
+go_explore_rrt_networkx/gifs/
+go_explore_rrt_networkx/images/
+go_explore_rrt_networkx/plans/
 
 # Jupyter
 .ipynb_checkpoints/
