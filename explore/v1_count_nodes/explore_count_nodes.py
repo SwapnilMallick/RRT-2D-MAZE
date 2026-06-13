@@ -31,9 +31,9 @@ class Node:
 
 
 class CountExplorer:
-    def __init__(self, maze, start, goal, eps=0.1, k_seed=15, j_rollout=6,
+    def __init__(self, maze, start, goal, eps=0.10, k_seed=15, j_rollout=6,
                  m_iters=4000, goal_radius=0.04, d_theta_deg=35, max_tries=16,
-                 node_cap=30000, seed=0):
+                 node_cap=3000, seed=None):
         self.maze = maze
         self.start = np.asarray(start, float)
         self.goal = np.asarray(goal, float)
@@ -146,7 +146,7 @@ class CountExplorer:
 # --------------------------------------------------------------------------- #
 if __name__ == "__main__":
     maze = FourRoomMaze(0.03)
-    ex = CountExplorer(maze, start=(0.10, 0.10), goal=(0.90, 0.90))
+    ex = CountExplorer(maze, start=(0.10, 0.90), goal=(0.90, 0.90))
     ex.run()
 
     counts = np.array([n.counter for n in ex.nodes])
