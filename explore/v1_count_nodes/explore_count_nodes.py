@@ -19,6 +19,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import argparse
+import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "go_explore_rrt_networkx"))
 from goexplore_maze import FourRoomMaze, FourRoomMazeV2, FourRoomMazeV3, FourRoomMazeV4, step
@@ -208,8 +209,32 @@ if __name__ == "__main__":
     a2.imshow(np.log1p(H.T), origin="lower", extent=[0, 1, 0, 1],
               cmap="magma", aspect="equal", zorder=0)
     a2.set_title("node density (log) — coverage")
-    out_dir = os.path.join(os.path.dirname(__file__), "images")
-    os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "explore_count.png")
-    fig.tight_layout(); fig.savefig(out_path, dpi=130)
-    print(f"saved {out_path}")
+
+    if args.mazeVersion == 1:
+        maze_name = "FourRoomMaze"
+        out_dir = os.path.join(os.path.dirname(__file__), "images", maze_name)
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, f"explore_count_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png")
+        fig.tight_layout(); fig.savefig(out_path, dpi=130)
+        print(f"saved {out_path}")
+    elif args.mazeVersion == 2:
+        maze_name = "FourRoomMazeV2"
+        out_dir = os.path.join(os.path.dirname(__file__), "images", maze_name)
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, f"explore_count_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png")
+        fig.tight_layout(); fig.savefig(out_path, dpi=130)
+        print(f"saved {out_path}")
+    elif args.mazeVersion == 3:
+        maze_name = "FourRoomMazeV3"
+        out_dir = os.path.join(os.path.dirname(__file__), "images", maze_name)
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, f"explore_count_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png")
+        fig.tight_layout(); fig.savefig(out_path, dpi=130)
+        print(f"saved {out_path}")
+    elif args.mazeVersion == 4:
+        maze_name = "FourRoomMazeV4"
+        out_dir = os.path.join(os.path.dirname(__file__), "images", maze_name)
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, f"explore_count_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png")
+        fig.tight_layout(); fig.savefig(out_path, dpi=130)
+        print(f"saved {out_path}")
