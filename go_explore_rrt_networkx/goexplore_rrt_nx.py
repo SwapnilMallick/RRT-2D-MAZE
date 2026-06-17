@@ -14,10 +14,10 @@ import numpy as np
 import networkx as nx
 from goexplore_nx import GoExploreRRTGraph
 from goexplore_maze import FourRoomMaze
-
+import argparse
 
 if __name__ == "__main__":
-    import argparse
+    
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=None, help="random seed (omit for a random run)")
     args = ap.parse_args()

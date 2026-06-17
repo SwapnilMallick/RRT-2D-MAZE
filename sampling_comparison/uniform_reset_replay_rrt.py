@@ -23,11 +23,11 @@ MAZE = FourRoomMaze(0.02)
 START = np.array([0.10, 0.90])     # top-left room
 GOAL = np.array([0.90, 0.90])      # top-right room
 EPS = 0.03                         # step size
-GOAL_BIAS = 0.10                   # prob of sampling the goal directly
+GOAL_BIAS = 0.05                   # prob of sampling the goal directly
 GOAL_RADIUS = 0.03
 BETA = 0.8                         # prior/uniform mix (only used if room_weights given)
 MAX_ITER = 60000
-SEEDS = range(40)
+SEEDS = range(50)
 
 
 def room_box(r):                   # r: 0=BL 1=BR 2=TL 3=TR

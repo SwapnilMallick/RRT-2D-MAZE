@@ -18,9 +18,10 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
+import argparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "go_explore_rrt_networkx"))
-from goexplore_maze import FourRoomMaze, step
+from goexplore_maze import FourRoomMaze, FourRoomMazeV2, FourRoomMazeV3, FourRoomMazeV4, step
 
 
 class Node:
@@ -145,8 +146,26 @@ class CountExplorer:
 
 # --------------------------------------------------------------------------- #
 if __name__ == "__main__":
-    maze = FourRoomMaze(0.03)
-    ex = CountExplorer(maze, start=(0.10, 0.90), goal=(0.90, 0.90))
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--mazeVersion", type=int, default=1, help="which maze variant to use (1-4)")
+    ap.add_argument("--start", type=float ,nargs=2, default=(0.10, 0.10), help="start coordinates (x y)")
+    ap.add_argument("--goal", type=float, nargs=2, default=(0.90, 0.90), help="goal coordinates (x y)")
+    ap.add_argument("--wall_thickness", type=float, default=0.02, help="wall thickness for the maze (default 0.02)")
+    args = ap.parse_args()
+
+    if args.mazeVersion == 1:
+        maze = FourRoomMaze(wall_thickness=args.wall_thickness)
+    elif args.mazeVersion == 2:
+        maze = FourRoomMazeV2(wall_thickness=args.wall_thickness)
+    elif args.mazeVersion == 3:
+        maze = FourRoomMazeV3(wall_thickness=args.wall_thickness)
+    elif args.mazeVersion == 4:
+        maze = FourRoomMazeV4(wall_thickness=args.wall_thickness)
+    else:
+        raise ValueError(f"invalid maze version {args.mazeVersion} (choose 1-4)")
+
+    ex = CountExplorer(maze, start=args.start, goal=args.goal)
     ex.run()
 
     counts = np.array([n.counter for n in ex.nodes])
