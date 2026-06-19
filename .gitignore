@@ -28,7 +28,8 @@ go_explore_rrt_networkx/gifs/
 go_explore_rrt_networkx/images/
 go_explore_rrt_networkx/plans/
 explore/v1_count_nodes/images/
-explore_discrete/images/
+explore_discrete/MazeGridV1/images/
+explore_discrete/MazeGridV2/images/
 
 # Jupyter
 .ipynb_checkpoints/

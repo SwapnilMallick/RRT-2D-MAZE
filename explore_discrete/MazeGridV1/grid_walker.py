@@ -21,10 +21,12 @@ Selection: c* = a uniformly random cell among TREE cells (reached cells) with th
 """
 
 import os
+import sys
 import datetime
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from grid_maze import build_grid
 
 ACTIONS = {"N": (0, 1), "S": (0, -1), "E": (1, 0), "W": (-1, 0),
