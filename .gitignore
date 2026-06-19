@@ -28,6 +28,7 @@ go_explore_rrt_networkx/gifs/
 go_explore_rrt_networkx/images/
 go_explore_rrt_networkx/plans/
 explore/v1_count_nodes/images/
+explore_discrete/images/
 
 # Jupyter
 .ipynb_checkpoints/
