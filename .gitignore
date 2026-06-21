@@ -30,7 +30,11 @@ go_explore_rrt_networkx/plans/
 explore/v1_count_nodes/images/
 explore_discrete/MazeGridV1/images/
 explore_discrete/MazeGridV2/images/
-continuous_bin_node_heirarchical_checking/images/
+continuous_bin/FourRoomMaze/
+continuous_bin/FourRoomMazeV2/
+continuous_bin/FourRoomMazeV3/
+continuous_bin/FourRoomMazeV4/
+continuous_bin/FourRoomMazeV5/
 # Jupyter
 .ipynb_checkpoints/
 

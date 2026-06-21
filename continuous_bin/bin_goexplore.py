@@ -21,8 +21,9 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from pathlib import Path
-from goexplore_maze import FourRoomMaze, step
+from goexplore_maze import FourRoomMaze, FourRoomMazeV2, FourRoomMazeV3, FourRoomMazeV4, FourRoomMazeV5, step
 import datetime
+import argparse
 
 class Node:
     __slots__ = ("id", "pos", "parent", "action", "bin", "visits")
@@ -172,8 +173,25 @@ def coverage(ex, G=50):
 
 
 if __name__ == "__main__":
-    maze = FourRoomMaze(0.02)
-    ex = BinGoExplore(maze, start=(0.10, 0.90), goal=(0.90, 0.90), seed=None)
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--mazeVersion", type=int, default=1, choices=[1, 2, 3, 4, 5], help="which maze version to use (default 1)")
+    ap.add_argument("--start", type=float ,nargs=2, default=(0.10, 0.10), help="start coordinates (x y)")
+    ap.add_argument("--goal", type=float, nargs=2, default=(0.90, 0.90), help="goal coordinates (x y)")
+    ap.add_argument("--wall_thickness", type=float, default=0.02, help="wall thickness for the maze (default 0.02)")
+    args = ap.parse_args()
+
+    if args.mazeVersion == 1:
+        maze = FourRoomMaze(wall_thickness=args.wall_thickness)
+    elif args.mazeVersion == 2:
+        maze = FourRoomMazeV2(wall_thickness=args.wall_thickness)
+    elif args.mazeVersion == 3:
+        maze = FourRoomMazeV3(wall_thickness=args.wall_thickness)
+    elif args.mazeVersion == 4:
+        maze = FourRoomMazeV4(wall_thickness=args.wall_thickness)
+    else:
+        maze = FourRoomMazeV5(wall_thickness=args.wall_thickness)
+
+    ex = BinGoExplore(maze, start=args.start, goal=args.goal, seed=None)
     ex.run()
 
     pops = np.array([ex.bin_pop[b] for b in ex.bin_boxes])
@@ -226,8 +244,33 @@ if __name__ == "__main__":
         a2.text((x0+x1)/2, (y0+y1)/2, str(v), ha="center", va="center",
                 fontsize=7, color="white", zorder=4)
     a2.set_title("per-bin population (anti-clutter signal)")
-    images_dir = Path(__file__).parent / "images"
-    images_dir.mkdir(exist_ok=True)
-    out_path = images_dir / f"bin_goexplore_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png"
-    fig.tight_layout(); fig.savefig(out_path, dpi=120)
-    print(f"saved {out_path}")
+    if args.mazeVersion == 1:
+        images_dir = Path(__file__).parent / "FourRoomMaze/"
+        images_dir.mkdir(exist_ok=True)
+        out_path = images_dir / f"bin_goexplore_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png"
+        fig.tight_layout(); fig.savefig(out_path, dpi=120)
+        print(f"saved {out_path}")
+    elif args.mazeVersion == 2:
+        images_dir = Path(__file__).parent / "FourRoomMazeV2/"
+        images_dir.mkdir(exist_ok=True)
+        out_path = images_dir / f"bin_goexplore_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png"
+        fig.tight_layout(); fig.savefig(out_path, dpi=120)
+        print(f"saved {out_path}")
+    elif args.mazeVersion == 3:
+        images_dir = Path(__file__).parent / "FourRoomMazeV3/"
+        images_dir.mkdir(exist_ok=True)
+        out_path = images_dir / f"bin_goexplore_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png"
+        fig.tight_layout(); fig.savefig(out_path, dpi=120)
+        print(f"saved {out_path}")
+    elif args.mazeVersion == 4:
+        images_dir = Path(__file__).parent / "FourRoomMazeV4/"
+        images_dir.mkdir(exist_ok=True)
+        out_path = images_dir / f"bin_goexplore_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png"
+        fig.tight_layout(); fig.savefig(out_path, dpi=120)
+        print(f"saved {out_path}")
+    else:
+        images_dir = Path(__file__).parent / "FourRoomMazeV5/"
+        images_dir.mkdir(exist_ok=True)
+        out_path = images_dir / f"bin_goexplore_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.png"
+        fig.tight_layout(); fig.savefig(out_path, dpi=120)
+        print(f"saved {out_path}")
