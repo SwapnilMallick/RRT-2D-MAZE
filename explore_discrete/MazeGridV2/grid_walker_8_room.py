@@ -22,7 +22,7 @@ from maze_grid_8_room import build_grid_8_room
 
 
 class GridWalkerMod(GridWalker):
-    def __init__(self, n=29, start=(2, 26), goal=(26, 26),
+    def __init__(self, n=29, start=(2, 2), goal=(2, 26),
                  k_seed=40, j_roll=20, n_iters=40000, seed=0):
         self.n = n
         self.obstacles, self.hrow, self.vcols = build_grid_8_room(n)
